@@ -147,8 +147,10 @@ const detailProcessor = (error, res, done) => {
         if(priceReg.exec(price)){
             detail.price = priceReg.exec(price)[0] - 0;
         }
-        detail.star = commentReg.exec(comment)[1] - 0;
-        detail.comment = commentReg.exec(comment)[2] - 0;
+        if(commentReg.exec(comment)){
+            detail.star = commentReg.exec(comment)[1] - 0;
+            detail.comment = commentReg.exec(comment)[2] - 0;
+        }
         detail.city = res.options.city;
 
         let infoList_1 = $('.main-item ul li').each((i,info) => {
