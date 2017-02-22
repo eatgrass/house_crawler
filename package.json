@@ -1,0 +1,16 @@
+{
+  "name": "house_crawler",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "crawler": "^1.0.3",
+    "lodash": "^4.17.4",
+    "mysql": "^2.13.0"
+  }
+}
