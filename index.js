@@ -5,12 +5,15 @@ const url = require('url');
 const _ = require('lodash');
 const path = require('path');
 const db = require('./db');
+const uaString = require('ua-string');
+
 
 db.connect();
 
 const c = new Crawler({
     maxConnections: 1,
-    rateLimit: 5000
+    rateLimit: 5000,
+    userAgent: uaString
 });
 
 const listFetcher = (error, res, done) => {
