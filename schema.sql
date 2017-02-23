@@ -8,7 +8,7 @@ CREATE TABLE `house` (
   `propertyRight` varchar(64) DEFAULT NULL,
   `developmentCo` varchar(64) DEFAULT NULL,
   `address` varchar(128) DEFAULT NULL,
-  `households` int(8) DEFAULT NULL,
+  `households` varchar(32) DEFAULT NULL,
   `saleTime` varchar(64) DEFAULT NULL,
   `deliveryTime` varchar(64) DEFAULT NULL,
   `city` varchar(32) DEFAULT NULL,
@@ -16,4 +16,4 @@ CREATE TABLE `house` (
   `comment` int(6) DEFAULT NULL,
   `propertyCo` varchar(64) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=227 DEFAULT CHARSET=utf8mb4;

@@ -207,8 +207,8 @@ const _mapInfoAttribute = (chs,val) => {
         '产权年限': {
             attr: 'propertyRight',
             val: ((val)=>{
-                val = val.replace('年','') - 0;
-                return typeof val == 'number' ? val : 0;
+                val = val.replace('年','');
+                return val;
             })(val)
         },
         '开发商': {
@@ -230,8 +230,8 @@ const _mapInfoAttribute = (chs,val) => {
         '总户数': {
             attr: 'households',
             val: ((val)=>{
-                val = val.replace('户','') - 0;
-                return typeof val == 'number' ? val : 0;
+                val = val.replace('户','');
+                return val;
             })(val)
         },
         '物业公司': {
