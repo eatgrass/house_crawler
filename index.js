@@ -12,7 +12,9 @@ db.connect();
 
 const c = new Crawler({
     maxConnections: 1,
-    rateLimit: 5000,
+    rateLimit: 15000, // gap 15 sec
+    limiter: 'list',
+    timeout: 45000,
     userAgent: uaString
 });
 
@@ -33,7 +35,8 @@ const listFetcher = (error, res, done) => {
                 {
                     uri: nextPage,
                     callback: listFetcher,
-                    city: res.options.city
+                    city: res.options.city,
+                    limiter: 'list'
                 }
             ])
         }
@@ -45,7 +48,11 @@ const listFetcher = (error, res, done) => {
             return {
                 uri: link.attribs.href,
                 callback: houseProcessor,
-                city: res.options.city
+                city: res.options.city,
+                priority: 3,
+                maxConnections: 1,
+                rateLimit: 20000, // gap 20 sec
+                limiter: 'detail'
             }
         });
 
@@ -118,7 +125,11 @@ const houseProcessor = (error, res, done) => {
         c.queue({
             uri: detailLinkEl.attribs.href,
             callback: detailProcessor,
-            city: res.options.city
+            city: res.options.city,
+            priority: 1,
+            maxConnections: 1,
+            rateLimit: 20000, // gap 20 sec
+            limiter: 'detail'
         });
 
 
