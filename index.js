@@ -7,7 +7,6 @@ const path = require('path');
 const db = require('./db');
 const uaString = require('ua-string');
 
-
 db.connect();
 
 const c = new Crawler({
@@ -164,7 +163,7 @@ const detailProcessor = (error, res, done) => {
         }
         detail.city = res.options.city;
 
-        let infoList_1 = $('.main-item ul li').each((i,info) => {
+        $('.main-item ul li').each((i,info) => {
             
             let pair = infoReg.exec($(info).text());
             
@@ -209,7 +208,7 @@ const _mapInfoAttribute = (chs,val) => {
             attr: 'propertyRight',
             val: ((val)=>{
                 val = val.replace('年','') - 0;
-                return typeof val == 'number' ? val : null;
+                return typeof val == 'number' ? val : 0;
             })(val)
         },
         '开发商': {
@@ -232,7 +231,7 @@ const _mapInfoAttribute = (chs,val) => {
             attr: 'households',
             val: ((val)=>{
                 val = val.replace('户','') - 0;
-                return typeof val == 'number' ? val : null;
+                return typeof val == 'number' ? val : 0;
             })(val)
         },
         '物业公司': {
